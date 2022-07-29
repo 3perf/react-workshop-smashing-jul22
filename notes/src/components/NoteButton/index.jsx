@@ -2,8 +2,10 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { format } from "date-fns";
 import "./index.css";
+import { memo } from "react";
+import { shallowEqual } from "react-redux";
 
-function NoteButton({ isActive, onNoteActivated, text, filterText, date }) {
+function NoteButton({ isActive, onNoteActivated, id, text, filterText, date }) {
   const className = [
     "notes-list__button",
     "notes-list__note",
@@ -13,7 +15,7 @@ function NoteButton({ isActive, onNoteActivated, text, filterText, date }) {
     .join(" ");
 
   return (
-    <button className={className} onClick={onNoteActivated}>
+    <button className={className} onClick={() => onNoteActivated(id)}>
       <span className="notes-list__note-meta">
         {format(date, "d MMM yyyy")}
       </span>
@@ -75,4 +77,4 @@ function generateNoteHeader(text, filterText) {
   );
 }
 
-export default NoteButton;
+export default memo(NoteButton);

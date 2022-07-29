@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Button, ButtonGroup } from "@mui/material";
 import FilterInput from "../FilterInput";
 import NoteButton from "../NoteButton";
 import "./index.css";
+import { useMemo } from "react";
+import { useCallback } from "react";
+
+// const FilterInputMemo = memo(FilterInput);
 
 function NotesList({
   notes,
@@ -13,14 +17,26 @@ function NotesList({
 }) {
   const [filter, setFilter] = useState("");
 
+  const meaningOfLife = useMemo(() => {
+    // Do 5 seconds of computations...
+
+    return 42;
+  }, []);
+
   return (
     <div className="notes-list" style={{ position: "relative" }}>
       <div className="notes-list__filter">
-        <FilterInput
-          filter={filter}
-          onChange={setFilter}
-          noteCount={Object.keys(notes).length}
-        />
+        {useMemo(
+          () => (
+            <FilterInput
+              filter={filter}
+              onChange={setFilter}
+              noteCount={Object.keys(notes).length}
+            />
+            // === previous version
+          ),
+          [filter, setFilter, Object.keys(notes).length]
+        )}
       </div>
 
       <div className="notes-list__notes">
@@ -33,16 +49,24 @@ function NotesList({
 
             return text.toLowerCase().includes(filter.toLowerCase());
           })
-          .map(({ id, text, date }) => (
-            <NoteButton
-              key={id}
-              isActive={activeNoteId === id}
-              onNoteActivated={() => onNoteActivated(id)}
-              text={text}
-              filterText={filter}
-              date={date}
-            />
-          ))}
+          .map(({ id, text, date }) => {
+            // const cb = useCallback(
+            //   () => onNoteActivated(id),
+            //   [onNoteActivated, id]
+            // );
+
+            return (
+              <NoteButton
+                key={id}
+                id={id}
+                isActive={activeNoteId === id}
+                onNoteActivated={onNoteActivated}
+                text={text}
+                filterText={filter}
+                date={date}
+              />
+            );
+          })}
       </div>
 
       <div className="notes-list__controls">

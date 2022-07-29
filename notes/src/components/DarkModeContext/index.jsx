@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { createContext } from "use-context-selector";
 import "./index.css";
 
 export const DarkModeContext = createContext();
@@ -14,9 +15,24 @@ export function DarkModeProvider({ children }) {
     };
   }, [mode]);
 
+  // const luminance = window.getOutsideLuminance();
+  const date = new Date();
+
   return (
-    <DarkModeContext.Provider value={{ mode, setMode }}>
+    <DarkModeContext.Provider
+      // value={mode}
+      value={{
+        mode,
+        setMode,
+        // luminance: luminance,
+        time: date,
+      }}
+    >
+      {/* <DarkModeSetContext.Provider value={setMode}> */}
+      {/* <DarkModeCurrentTimeContext.Provider value={date}> */}
       {children}
+      {/* </DarkModeCurrentTimeContext.Provider> */}
+      {/* </DarkModeSetContext.Provider> */}
     </DarkModeContext.Provider>
   );
 }

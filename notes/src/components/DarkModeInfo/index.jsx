@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import Button from "@mui/material/Button";
 import { DarkModeContext } from "../DarkModeContext";
+import { useContextSelector } from "use-context-selector";
 import "./index.css";
 
 function DarkModeInfo() {
-  const { mode } = useContext(DarkModeContext);
+  const mode = useContextSelector(
+    DarkModeContext,
+    (contextValue) => contextValue.mode
+  );
 
   return (
     <span>
