@@ -11,6 +11,7 @@
     "@reduxjs/toolkit": "^1.8.1",
     "codemirror": "^5.65.2",
     "date-fns": "^2.27.0",
+    "immer": "^9.0.15",
     "jabber": "^1.2.2",
     "lodash": "^4.17.21",
     "mobx": "^6.5.0",

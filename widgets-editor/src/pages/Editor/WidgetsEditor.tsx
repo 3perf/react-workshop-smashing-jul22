@@ -49,6 +49,7 @@ const CanvasContainer = styled.section`
 
 /* eslint-disable react/display-name */
 const WidgetsEditor = () => {
+  // → 5 ms
   const { focusWidget, selectWidget } = useWidgetSelection();
   const params = useParams<{ applicationId: string; pageId: string }>();
   const dispatch = useDispatch();
@@ -59,6 +60,10 @@ const WidgetsEditor = () => {
   const currentPageName = useSelector(getCurrentPageName);
   const currentApp = useSelector(getCurrentApplication);
   useDynamicAppLayout();
+
+  useEffect(() => {
+    // 100 ms
+  });
 
   // Switch page
   useEffect(() => {
@@ -119,6 +124,10 @@ const WidgetsEditor = () => {
       </EditorWrapper>
     </EditorContextProvider>
   );
+};
+
+WidgetsEditor.whyDidYouRender = {
+  logOnDifferentValues: true,
 };
 
 export default WidgetsEditor;

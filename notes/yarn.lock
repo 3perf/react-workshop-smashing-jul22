@@ -1710,6 +1710,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"immer@npm:^9.0.15":
+  version: 9.0.15
+  resolution: "immer@npm:9.0.15"
+  checksum: 92e3d63e810e3c3c2bb61b70c45443e37ef983ad12924e3edaf03725ae5979618f5b473439bb3bb4a8c4769f25132f18dec10ea15c40f0b20da5691ff96ff611
+  languageName: node
+  linkType: hard
+
 "immer@npm:^9.0.7":
   version: 9.0.12
   resolution: "immer@npm:9.0.12"
@@ -2901,6 +2908,7 @@ __metadata:
     "@welldone-software/why-did-you-render": ^7.0.0
     codemirror: ^5.65.2
     date-fns: ^2.27.0
+    immer: ^9.0.15
     jabber: ^1.2.2
     lodash: ^4.17.21
     mobx: ^6.5.0
