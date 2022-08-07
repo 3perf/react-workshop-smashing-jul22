@@ -24,7 +24,7 @@ const saveNotesToLocalStorage = (notes) => {
     const transformedNote = {
       ...note,
       date: formatISO(note.date),
-      html: marked(note.text),
+      // html: marked(note.text),
     };
     transformedNotes[id] = transformedNote;
   }

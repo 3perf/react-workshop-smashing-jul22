@@ -16,3 +16,7 @@
 .note-view__text :last-child {
   margin-bottom: 0;
 }
+
+p {
+  content-visibility: auto;
+}
