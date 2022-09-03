@@ -10741,6 +10741,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-lazy-hydration@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "react-lazy-hydration@npm:0.1.0"
+  dependencies:
+    "@babel/runtime": ^7.9.2
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 1140b9a082c44fece319dd9b5af9a2b37bf5b7fc6e1e14dc12b9f29593103dda96494d928ca9fe49a2805fe12ae6f5aa8e3fa0fe4bf5e1f2c2f622a73598a7e0
+  languageName: node
+  linkType: hard
+
 "react-markdown@npm:^6.0.2":
   version: 6.0.2
   resolution: "react-markdown@npm:6.0.2"
@@ -10901,6 +10912,7 @@ __metadata:
     react: ^18.2.0
     react-app-rewired: ^2.2.1
     react-dom: ^18.2.0
+    react-lazy-hydration: ^0.1.0
     react-markdown: ^6.0.2
     react-redux: ^7.2.4
     react-scripts: ^5.0.1

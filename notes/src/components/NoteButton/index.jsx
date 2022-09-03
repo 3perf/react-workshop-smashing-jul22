@@ -10,14 +10,30 @@ function NoteButton({ isActive, id, onNoteActivated, text, filterText, date }) {
   useLayoutEffect(() => {
     if (noteHeader.current) {
       if (noteHeader.current.scrollWidth > noteHeader.current.clientWidth) {
-        noteHeader.current.classList.add("notes-list__note-header_overflowing");
+        // ← forces the recalc
+        requestAnimationFrame(() => {
+          noteHeader.current.classList.add(
+            "notes-list__note-header_overflowing"
+          ); // ← invalidates the layout
+        });
+        // to solve layout thrashing: get rid of either of these lines
       } else {
-        noteHeader.current.classList.remove(
-          "notes-list__note-header_overflowing"
-        );
+        requestAnimationFrame(() => {
+          noteHeader.current.classList.remove(
+            "notes-list__note-header_overflowing"
+          );
+        });
       }
     }
   }, [text]);
+
+  // WON’T WORK:
+  // useLayoutEffect → useEffect (wouldn’t work)
+
+  // WORK:
+  // 1. moving the control to the parent (so we could reads from writes)
+  // 2. just having the _overflowing class on the note header always
+  // 3. wrapping the code that does the write with requestAnimationFrame
 
   const className = [
     "notes-list__button",

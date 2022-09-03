@@ -13,6 +13,35 @@ function NotesList({
 }) {
   const [filter, setFilter] = useState("");
 
+  // useLayoutEffect(() => {
+  //   let widths = [];
+  //   for (let i = 0; i < notesListRef.current.childNodes.length; ++i) {
+  //     const noteHeader = notesListRef.current.childNodes[i].querySelector(
+  //       ".notes-list__note-header"
+  //     );
+
+  //     widths.push(
+  //       noteHeader.current.scrollWidth > noteHeader.current.clientWidth
+  //     );
+  //   }
+
+  //   for (let i = 0; i < notesListRef.current.childNodes.length; ++i) {
+  //     const noteHeader = notesListRef.current.childNodes[i].querySelector(
+  //       ".notes-list__note-header"
+  //     );
+
+  //     if (widths[i]) {
+  //       noteHeader.current.classList.add("notes-list__note-header_overflowing"); // ← invalidates the layout
+  //     } else {
+  //       noteHeader.current.classList.remove(
+  //         "notes-list__note-header_overflowing"
+  //       );
+  //     }
+  //   }
+
+  //   // → 1 (0 extra recalcs)
+  // }, [text]);
+
   return (
     <div className="notes-list" style={{ position: "relative" }}>
       <div className="notes-list__filter">

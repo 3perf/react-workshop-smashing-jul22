@@ -25,6 +25,7 @@
     "react": "^18.2.0",
     "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
+    "react-lazy-hydration": "^0.1.0",
     "react-markdown": "^6.0.2",
     "react-redux": "^7.2.4",
     "react-scripts": "^5.0.1",
